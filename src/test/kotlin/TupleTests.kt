@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import kotlin.math.sqrt
 
-internal class TuplesTest {
+internal class TupleTests {
 	// A tuple with w=1 is a point
 	@Test
 	fun tupleIsPoint() {

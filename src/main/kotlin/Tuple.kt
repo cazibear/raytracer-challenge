@@ -3,7 +3,6 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 import kotlin.reflect.typeOf
 
-const val EPSILON = 0.00001
 
 open class Tuple(x: Number, y: Number, z: Number, w: Number) {
 	var x: Double = x.toDouble()
@@ -17,10 +16,6 @@ open class Tuple(x: Number, y: Number, z: Number, w: Number) {
 	}
 	fun isVector(): Boolean {
 		return w == 0.0
-	}
-
-	fun equal(a: Number, b: Number): Boolean {
-		return abs(a.toDouble() - b.toDouble()) < EPSILON
 	}
 
 	fun magnitude() = sqrt(x.pow(2) + y.pow(2) + z.pow(2) + w.pow(2))
@@ -52,12 +47,16 @@ open class Tuple(x: Number, y: Number, z: Number, w: Number) {
 	}
 
 	companion object {
+		const val EPSILON = 0.00001
+
 		fun dotProduct(a: Tuple, b: Tuple) = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w
 		fun crossProduct(a: Tuple, b: Tuple) = Vector(
 			a.y * b.z - a.z * b.y,
 			a.z * b.x - a.x * b.z,
 			a.x * b.y - a.y * b.x
 		)
+
+		fun equal(a: Number, b: Number) = abs(a.toDouble() - b.toDouble()) < EPSILON
 	}
 }
 
